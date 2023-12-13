@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use serde::Deserialize;
 
 use crate::{
@@ -43,7 +41,7 @@ impl SinkProvider for WithUtils<Config> {
 
         let utils = self.utils.clone();
 
-        let attributes = self.inner.attributes.cloned().unwrap_or_default();
+        let attributes = self.inner.attributes.clone().unwrap_or_default();
 
         let handle = std::thread::spawn(move || {
             writer_loop(

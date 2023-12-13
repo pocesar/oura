@@ -1,4 +1,7 @@
-use std::sync::Arc;
+use std::{
+    sync::Arc,
+    collections::HashMap
+};
 
 use google_cloud_googleapis::pubsub::v1::PubsubMessage;
 use google_cloud_pubsub::{
@@ -15,7 +18,7 @@ use crate::{
     utils::{retry, Utils},
 };
 
-pub type GenericKV = HashMap<alloc::string::String, alloc::string::String>;
+pub type GenericKV = HashMap<String, String>;
 
 async fn send_pubsub_msg(
     publisher: &Publisher,
@@ -27,7 +30,7 @@ async fn send_pubsub_msg(
     let msg = PubsubMessage {
         data: body.into(),
         ordering_key: ordering_key.into(),
-        attributes: attributes.into(),
+        attributes: attributes.to_owned().into(),
         ..Default::default()
     };
 
