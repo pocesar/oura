@@ -1489,7 +1489,7 @@ dependencies = [
  "tokio",
  "tokio-retry",
  "tokio-util",
- "tonic",
+ "tonic 0.8.3",
  "tower",
  "tracing",
 ]
@@ -1502,7 +1502,18 @@ checksum = "8bccc14a0bfb89f7b6c955da84992774d94d2f16570e5f7b74c7db11e765f791"
 dependencies = [
  "prost",
  "prost-types",
- "tonic",
+ "tonic 0.8.3",
+]
+
+[[package]]
+name = "google-cloud-googleapis"
+version = "0.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "04799536fa663ab9ab6cc4898085a143d180082cc5848e0425b154fcfddf2efd"
+dependencies = [
+ "prost",
+ "prost-types",
+ "tonic 0.9.2",
 ]
 
 [[package]]
@@ -1526,7 +1537,7 @@ dependencies = [
  "async-stream",
  "google-cloud-auth",
  "google-cloud-gax",
- "google-cloud-googleapis",
+ "google-cloud-googleapis 0.7.0",
  "prost-types",
  "thiserror",
  "tokio",
@@ -2243,7 +2254,7 @@ dependencies = [
  "elasticsearch",
  "env_logger",
  "file-rotate",
- "google-cloud-googleapis",
+ "google-cloud-googleapis 0.11.1",
  "google-cloud-pubsub",
  "hex",
  "kafka",
@@ -3544,6 +3555,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "tokio-rustls"
+version = "0.24.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c28327cf380ac148141087fbfb9de9d7bd4e84ab5d2c28fbc911d753de8a7081"
+dependencies = [
+ "rustls 0.21.10",
+ "tokio",
+]
+
+[[package]]
 name = "tokio-stream"
 version = "0.1.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3611,6 +3632,38 @@ dependencies = [
  "tracing",
  "tracing-futures",
  "webpki-roots",
+]
+
+[[package]]
+name = "tonic"
+version = "0.9.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3082666a3a6433f7f511c7192923fa1fe07c69332d3c6a2e6bb040b569199d5a"
+dependencies = [
+ "async-stream",
+ "async-trait",
+ "axum",
+ "base64 0.21.5",
+ "bytes",
+ "flate2 1.0.28",
+ "futures-core",
+ "futures-util",
+ "h2",
+ "http",
+ "http-body",
+ "hyper",
+ "hyper-timeout",
+ "percent-encoding",
+ "pin-project",
+ "prost",
+ "rustls-pemfile",
+ "tokio",
+ "tokio-rustls 0.24.1",
+ "tokio-stream",
+ "tower",
+ "tower-layer",
+ "tower-service",
+ "tracing",
 ]
 
 [[package]]
