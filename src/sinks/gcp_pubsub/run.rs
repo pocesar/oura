@@ -1,7 +1,4 @@
-use std::{
-    sync::Arc,
-    collections::HashMap
-};
+use std::{collections::HashMap, sync::Arc};
 
 use google_cloud_googleapis::pubsub::v1::PubsubMessage;
 use google_cloud_pubsub::{
@@ -66,7 +63,14 @@ pub fn writer_loop(
 
     for event in input.iter() {
         let result = retry::retry_operation(
-            || rt.block_on(send_pubsub_msg(&publisher, &event, ordering_key, attributes)),
+            || {
+                rt.block_on(send_pubsub_msg(
+                    &publisher,
+                    &event,
+                    ordering_key,
+                    attributes,
+                ))
+            },
             retry_policy,
         );
 
