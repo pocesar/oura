@@ -27,12 +27,12 @@ async fn send_pubsub_msg(
     let msg = PubsubMessage {
         data: body.into(),
         ordering_key: ordering_key.into(),
-        attributes: attributes.to_owned().into(),
+        attributes: attributes.to_owned(),
         ..Default::default()
     };
 
     publisher
-        .publish_immediately(vec![msg], None, None)
+        .publish_immediately(vec![msg], None)
         .await
         .map_err(|err| err.message().to_owned())?;
 
